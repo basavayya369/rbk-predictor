@@ -6,16 +6,16 @@ from flask_cors import CORS
 
 MODEL_PATH = "trained_pipelineV.joblib"
 
-# ✅ Create Flask app
+# Create Flask app
 app = Flask(__name__)
 CORS(app)
 
-# ✅ Load the model once
+# Load the model once
 try:
     model = joblib.load(MODEL_PATH)
-    print(f"✅ Model loaded from {MODEL_PATH}")
+    print(f"Model loaded from {MODEL_PATH}")
 except Exception as e:
-    print(f"❌ Failed to load model: {e}")
+    print(f"Failed to load model: {e}")
     model = None
 
 
@@ -28,7 +28,7 @@ def predict():
     try:
         # Read request
         data = request.get_json()
-        print("📩 Incoming data:", data)
+        print(" Incoming data:", data)
 
         # Match training column names
         input_df = pd.DataFrame([{
@@ -39,12 +39,12 @@ def predict():
             "QTY_MTs": float(data["qty"]),
             "No_Of_Farmers": int(data["farmers"])
         }])
-        print("📊 Input DataFrame:")
+        print(" Input DataFrame:")
         print(input_df)
 
         # Prediction
         prediction = model.predict(input_df)[0]
-        print("✅ Prediction:", prediction)
+        print(" Prediction:", prediction)
 
         # SHAP values
         shap_dict = {}
@@ -58,7 +58,7 @@ def predict():
                 feature_names[i]: float(shap_values.values[0][i])
                 for i in range(len(feature_names))
             }
-            print("✅ SHAP values generated")
+            print(" SHAP values generated")
         except Exception as shap_err:
             print("⚠ SHAP calculation failed:", shap_err)
 
