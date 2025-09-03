@@ -5,7 +5,6 @@ import pandas as pd
 from flask_cors import CORS
 
 MODEL_PATH ="trained_pipelineV.joblib"
-"
 
 # Create Flask app
 app = Flask(__name__)
