@@ -16,10 +16,10 @@ try:
     sess = rt.InferenceSession(MODEL_PATH)
     input_names = [inp.name for inp in sess.get_inputs()]
     output_name = sess.get_outputs()[0].name
-    print(f"✅ ONNX model loaded from {MODEL_PATH}")
+    print(f" ONNX model loaded from {MODEL_PATH}")
     print("Expected inputs:", input_names)
 except Exception as e:
-    print(f"❌ Failed to load ONNX model: {e}")
+    print(f" Failed to load ONNX model: {e}")
     sess = None
 
 
@@ -54,7 +54,7 @@ def predict():
 
         # Run ONNX inference
         prediction = sess.run([output_name], input_data)[0][0]
-        print("✅ Prediction:", prediction)
+        print(" Prediction:", prediction)
 
         return jsonify({
             "predicted_amount": float(prediction)
