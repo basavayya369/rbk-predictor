@@ -1,0 +1,3 @@
+[submodule "frontend"]
+    path = frontend
+    url = https://github.com/basavayya369/rbk-predictor.git
