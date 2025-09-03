@@ -1,20 +1,18 @@
 #!/bin/bash
 
-# Install Rust only if not already installed
-if ! command -v cargo &> /dev/null; then
-  echo "Installing Rust..."
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-else
-  echo "Rust is already installed."
-fi
+# Exit immediately on error
+set -e
 
-# Set up Rust environment
+echo " Installing Rust"
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+echo " Loading Rust environment"
 source $HOME/.cargo/env
+
+echo " Setting Rust to stable"
 rustup default stable
 
-# Optional: print rust version for debug
-rustc --version
-cargo --version
-
-# Install Python dependencies
+echo " Installing Python dependencies"
 pip install -r requirements.txt
+
+echo "Build script completed successfully"
