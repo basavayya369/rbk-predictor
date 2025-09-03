@@ -7,7 +7,7 @@ echo " Installing Rust"
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
 
 echo " Loading Rust environment"
-source $HOME/.cargo/env
+source /tmp/.cargo/env
 
 echo " Setting Rust to stable"
 rustup default stable
