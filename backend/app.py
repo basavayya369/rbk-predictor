@@ -40,7 +40,7 @@ def predict():
     try:
         # Get input JSON
         data = request.get_json()
-        print("📥 Incoming data:", data)
+        print(" Incoming data:", data)
 
         # Convert JSON → numpy with correct shape (n,1)
         input_data = {
